@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/index.js"></script>
+		<style>
+			body {
+				margin: 0;
+				height: 100%;
+				overflow: hidden;
+			}
+			ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			body {
+				font: 12px/20px;
+			}
+			#rightMenu {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#rightMenu ul {
+				float: left;
+				border: 1px solid #979797;
+				background: #f1f1f1;
+				padding: 2px;
+				box-shadow: 2px 2px 2px rgba(0, 0, 0, .6);
+			}
+			#rightMenu ul li {
+				float: left;
+				clear: both;
+				height: 24px;
+				cursor: pointer;
+				line-height: 24px;
+				white-space: nowrap;
+				padding: 0 30px;
+			}
+			#rightMenu ul li.sub {
+				background-repeat: no-repeat;
+				background-position: right 9px;
+				background-image: url(img/arrow.png);
+			}
+			#rightMenu ul li.active {
+				background-color: #f1f3f6;
+				border-radius: 3px;
+				border: 1px solid #AECFF7;
+				height: 22px;
+				line-height: 22px;
+				background-position: right -8px;
+				padding: 0 29px;
+			}
+			#rightMenu ul ul {
+				display: none;
+				position: absolute;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="rightMenu">
+			<ul>
+				<li>查看
+					<ul>
+						<li>大图标</li>
+						<li>中等图标</li>
+						<li>小图标</li>
+						<li>显示桌面</li>
+					</ul>
+				</li>
+				<li> 排序方式
+		      <ul>
+		        <li>名称</li>
+		        <li>类型</li>
+		        <li>日期</li>
+		        <li>项目</li>
+		      </ul>
+		    </li>
+		    <li> 图形选项
+		      <ul>
+		        <li> 屏幕适应
+		          <ul>
+		            <li>保持显示缩放比</li>
+		          </ul>
+		        </li>
+		        <li> 快捷键
+		          <ul>
+		            <li>启用</li>
+		            <li>禁用</li>
+		          </ul>
+		        </li>
+		        <li> 系统托盘图标
+		          <ul>
+		            <li>启用</li>
+		            <li>禁用</li>
+		          </ul>
+		        </li>
+		      </ul>
+		    </li>
+			</ul>
+		</div>
+	</body>
+</html>

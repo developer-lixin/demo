@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			img {
+				border: none;
+				vertical-align: top;
+			}
+			.clearfix:after {
+				content: "";
+				display: block;
+				clear: both;
+			}
+			#wrap {
+				width: 250px;
+				height: 200px;
+				border: 1px solid #000;
+				margin: 40px auto;
+				overflow: hidden;
+				position: relative;
+			}
+			#wrap img {
+				width: 250px;
+				height: 200px;
+			}
+			#wrap #list {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 500%;
+			}
+			#wrap #list2 {
+				position: absolute;
+				left: 0;
+				top: 0;
+				height: 500%;
+			}
+			#list li {
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<ul id="list" class='clearfix'>
+				<li><img src="img/1.jpg"/></li>
+				<li><img src="img/2.jpg"/></li>
+				<li><img src="img/3.jpg"/></li>
+				<li><img src="img/4.jpg"/></li>
+				<li><img src="img/1.jpg"/></li>
+			</ul>
+			<ul id="list2">
+				<li><img src="img/1.jpg"/></li>
+				<li><img src="img/2.jpg"/></li>
+				<li><img src="img/3.jpg"/></li>
+				<li><img src="img/4.jpg"/></li>
+				<li><img src="img/1.jpg"/></li>
+			</ul>
+		</div>
+		<script src="js/aTween.js"></script>
+		<script>
+			(function() {
+				var list = document.getElementById("list");
+				var list2 = document.getElementById("list2");
+				var lis = document.querySelectorAll('#list li');
+				var li2s = document.querySelectorAll("#list2 li");
+				var imgW = css(lis[0],"width");
+				var imgH = css(lis[0],"height");
+				list.style.width = lis.length + "00%";
+				var nub = 0;
+				window.onkeydown = function(ev) {
+					if(ev.keyCode == 37){
+						if(nub <= 0) {
+							nub = lis.length-1;
+							css(list,"left",-nub*imgW);
+						}
+						nub--;
+						mTween(list,{left:-imgW*nub},800,"easeOut");
+						mTween(list2,{top:-imgH*nub},800,"easeOut");
+						list2.style.zIndex = 1;
+						list.style.zIndex = 999;
+					}
+					if(ev.keyCode == 39) {
+						if(nub >= lis.length-1) {
+							nub = 0;
+							css(list,"left",0);
+						}
+						nub++;
+						mTween(list,{left:-imgW*nub},500,"easeOut");
+						mTween(list2,{top:-imgH*nub},500,"easeOut");
+						list2.style.zIndex = 1;
+						list.style.zIndex = 999;
+					}
+					
+					if(ev.keyCode == 38){
+						
+						if(nub <= 0) {
+							nub = lis.length-1;
+							css(list2,"top",-nub*imgH);
+						}
+						nub--;
+						mTween(list2,{top:-imgH*nub},800,"easeOut");
+						mTween(list,{left:-imgW*nub},800,"easeOut");
+						list2.style.zIndex = 999;
+					}
+					if(ev.keyCode == 40) {
+						if(nub >= lis.length-1) {
+							nub = 0;
+							css(list2,"top",0);
+						}
+						nub++;
+						mTween(list2,{top:-imgH*nub},500,"easeOut");
+						mTween(list,{left:-imgW*nub},500,"easeOut");
+						list2.style.zIndex = 999;
+					}
+				}
+				
+				window.mouseup = function(ev) {
+					switch(ev.keyCode) {
+						case 37:
+							list.style.zIndex = 1;
+							return false;
+							break;
+						case 38:
+							list2.style.zIndex = 1;	
+							return false;
+							break;
+						case 39:
+							list.style.zIndex = 1;
+							return false;
+							break;
+						case 40:
+							list2.style.zIndex = 1;
+							return false;
+							break;
+					}
+				};
+			})();
+		</script>
+	</body>
+</html>
